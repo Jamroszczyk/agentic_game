@@ -138,18 +138,18 @@ class Game:
     def _draw_grid(self):
         """Draw a grid for reference"""
         # Calculate grid start and end based on camera position
-        start_x = (self.camera.x // 50) * 50
-        start_y = (self.camera.y // 50) * 50
+        start_x = int((self.camera.x // 50) * 50)
+        start_y = int((self.camera.y // 50) * 50)
 
         # Draw vertical lines
-        for x in range(start_x, start_x + self.width + 50, 50):
+        for x in range(start_x, int(start_x + self.width + 50), 50):
             screen_x = x - self.camera.x
             pygame.draw.line(
                 self.screen, self.GRAY, (screen_x, 0), (screen_x, self.height), 1
             )
 
         # Draw horizontal lines
-        for y in range(start_y, start_y + self.height + 50, 50):
+        for y in range(start_y, int(start_y + self.height + 50), 50):
             screen_y = y - self.camera.y
             pygame.draw.line(
                 self.screen, self.GRAY, (0, screen_y), (self.width, screen_y), 1

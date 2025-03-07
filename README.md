@@ -7,7 +7,11 @@ A simple top-down game created with Pygame where you control a black sphere in a
 - 1000 x 1000 world with grid lines
 - White background
 - Black player sphere with smooth movement
-- NPCs with basic AI behaviors (wander, follow, flee)
+- NPCs with basic AI behaviors:
+  - Wander: Move randomly around the world
+  - Follow: Form groups of up to two NPCs
+  - Flee: Run away from the player
+  - Talking: NPCs stop wandering and face each other during conversations
 - Click-to-move controls (similar to Baldur's Gate)
 - Smooth movement with momentum and physics
 - Advanced gradual deceleration system with minimum velocity
@@ -64,6 +68,31 @@ python3 main.py
 - ESC: Quit the game
 - F: Toggle fixed/following camera
 - Close the window to exit the game
+
+## NPC Behavior
+
+The NPCs in the game exhibit the following behaviors:
+
+1. **Wandering**: By default, NPCs wander randomly around the world. When an NPC has a follower, it will mostly stand still to allow for interaction.
+
+2. **Following**: NPCs may decide to follow other NPCs, with a 10% chance of initiating following behavior when they detect another NPC. They will only form groups of two at most. If two NPCs are already in a group, no third NPC will join them.
+
+3. **Talking**: When two NPCs form a group, they enter a talking state where they:
+   - Face each other and maintain a comfortable distance
+   - Stop wandering and focus on the conversation
+   - Exchange a simple greeting dialog with speech bubbles
+   - The leader says "Hi" and the follower responds with "Hello"
+   - After the conversation, the leader returns to wandering and the follower continues following
+
+4. **Fleeing**: NPCs will flee from the player when they detect them nearby.
+
+## Speech Bubbles
+
+When NPCs talk, speech bubbles appear above their heads with:
+- White background with rounded corners
+- Black border
+- Dark gray text
+- A small triangle pointing to the speaking NPC
 
 ## Adding New Entities
 
